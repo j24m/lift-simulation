@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lift Simulator</title>
+    <link rel="stylesheet" href="https://basicui.netlify.app/components.css" />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="main-container">
+      <div class="user-input-container">
+        <h1>Lift Simulation</h1>
+        <div class="label-input-container">
+          <label for="floors">Floors</label>
+          <input
+            placeholder="Please enter the number of floors"
+            type="number"
+            id="floors"
+          />
+        </div>
+        <div class="label-input-container">
+          <label for="lifts">Lifts</label>
+          <input
+            placeholder="Please enter the number of lifts"
+            type="number"
+            id="lifts"
+          />
+        </div>
+        <button class="btn btn-primary btn-simulate">Simulate</button>
+      </div>
+      <div class="toast-container">
+        <div class="toast simple-toast">
+          <div class="toast-message"></div>
+          <button class="btn-close">CLOSE</button>
+        </div>
+      </div>
+    </div>
+    <script src="./app.js"></script>
+  </body>
+</html>
