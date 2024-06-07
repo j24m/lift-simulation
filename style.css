@@ -51,8 +51,12 @@
   border-radius: 0.2rem;
 }
 
+.user-input-container button:hover {
+  transition: 400ms ease;
+}
+
 .user-input-container button:active {
-  background-color: #44395f;
+  background-color: #c185db;
 }
 
 .toast-container {
@@ -95,4 +99,19 @@
     bottom: 6rem;
     opacity: 1;
   }
+}
+
+.backBtn {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  border: 0.5px solid rgb(224, 212, 212);
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+}
+
+.backBtn:hover {
+  transition: 500ms ease;
+  background-color: var(--secondary-color);
+  box-shadow: 2px 2px 5px #132020;
 }
