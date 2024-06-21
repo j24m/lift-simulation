@@ -105,7 +105,6 @@
   position: fixed;
   top: 1rem;
   left: 1rem;
-  border: 0.5px solid rgb(224, 212, 212);
   background-color: var(--secondary-color);
   color: var(--primary-color);
 }
@@ -114,4 +113,100 @@
   transition: 500ms ease;
   background-color: var(--secondary-color);
   box-shadow: 2px 2px 5px #132020;
+}
+
+.building-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 90%;
+}
+
+.roof {
+  width: 50rem;
+  height: 5rem;
+  border: solid rgb(204, 164, 45);
+  background-color: rgb(167, 135, 39);
+}
+
+.floor {
+  display: flex;
+  padding: 1rem;
+  justify-content: space-between;
+  background-color: rgb(66, 53, 14);
+  height: 15rem;
+  width: 95%;
+  border: 1px solid rgb(204, 164, 45);
+}
+
+.floor .wall {
+  background-color: rgb(167, 135, 39);
+  width: 20rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.floor .wall .window {
+  background-color: rgb(232, 165, 40);
+  border: solid rgb(255, 167, 3);
+  width: 10rem;
+  height: 10rem;
+  margin: 1rem;
+}
+
+.lift-controls {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.floor-number {
+  font-size: 1.6rem;
+  color: gray;
+  font-weight: bold;
+}
+
+.lift-controls button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  height: 3.8rem;
+  width: 3.8rem;
+  box-shadow: inset 0px 0px 2px 1px gray, inset 0px -3px 4px rgba(0, 0, 0, 0.3),
+    inset 0px 3px 4px rgba(255, 255, 255, 0.6), 0px -2px 3px rgba(0, 0, 0, 0.6),
+    0px 1px 2px rgba(255, 255, 255, 0.7), 0px 0px 1px 1px black,
+    0px 0px 0px 5px gray, 0px 0px 1px 6px black;
+}
+
+.lift-controls button:hover {
+  border-color: lime;
+}
+
+.building-container .bottom {
+  width: 100%;
+  height: 2rem;
+  background-color: rgb(167, 135, 39);
+}
+
+.lift {
+  display: flex;
+  box-shadow: inset 0px 0px 2px 1px gray, inset 0px -3px 4px rgba(0, 0, 0, 0.3),
+    inset 0px 3px 4px rgba(255, 255, 255, 0.6), 0px -2px 3px rgba(0, 0, 0, 0.6),
+    0px 1px 2px rgba(255, 255, 255, 0.7), 0px 0px 1px 1px black,
+    0px 0px 0px 5px gray, 0px 0px 1px 6px black;
+  height: 140px;
+  width: 100px;
+  overflow: hidden;
+  background: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRd1mWAPNX7-MZcsoEi71aX8HHqspuPd_6ssQ&s);
+  background-size: 100% 100%;
+}
+
+.left-door,
+.right-door {
+  width: 50px;
+  border: 1px solid rgb(97, 92, 92);
+  background-color: #aaa;
 }
