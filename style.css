@@ -4,11 +4,12 @@
 
 .main-container {
   background-color: var(--primary-color);
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  min-height: 100vh;
+  flex-wrap: wrap;
 }
 
 .label-input-container {
@@ -51,8 +52,12 @@
   border-radius: 0.2rem;
 }
 
+.user-input-container button:hover {
+  transition: 400ms ease;
+}
+
 .user-input-container button:active {
-  background-color: #44395f;
+  background-color: #c185db;
 }
 
 .toast-container {
@@ -95,4 +100,222 @@
     bottom: 6rem;
     opacity: 1;
   }
+}
+
+.backBtn {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+}
+
+.backBtn:hover {
+  transition: 500ms ease;
+  background-color: var(--secondary-color);
+  box-shadow: 2px 2px 5px #132020;
+}
+
+.sun {
+  color: yellow;
+  position: absolute;
+  right: 10rem;
+  top: 5rem;
+}
+
+.clouds {
+  display: flex;
+}
+
+.cloud {
+  color: rgb(231, 224, 224);
+}
+
+.building-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 7rem;
+}
+
+.roof {
+  width: 50rem;
+  height: 5rem;
+  border: solid rgb(204, 164, 45);
+  background-color: rgb(167, 135, 39);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 4rem;
+}
+
+.floor-container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.floor {
+  display: flex;
+  padding: 1rem;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(66, 53, 14);
+  height: 150px;
+  border: 1px solid rgb(204, 164, 45);
+  gap: 5rem;
+  min-width: 120rem;
+}
+
+.lift-system {
+  display: flex;
+  gap: 4rem;
+  height: 100%;
+}
+
+.lift-controls {
+  width: 7rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  gap: 1rem;
+}
+
+.floor-number {
+  font-size: 1.6rem;
+  color: gray;
+  font-weight: bold;
+}
+
+.lift-controls button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  height: 3.8rem;
+  width: 3.8rem;
+  box-shadow: inset 0px 0px 2px 1px gray, inset 0px -3px 4px rgba(0, 0, 0, 0.3),
+    inset 0px 3px 4px rgba(255, 255, 255, 0.6), 0px -2px 3px rgba(0, 0, 0, 0.6),
+    0px 1px 2px rgba(255, 255, 255, 0.7), 0px 0px 1px 1px black,
+    0px 0px 0px 5px gray, 0px 0px 1px 6px black;
+}
+
+.lift-controls button:hover {
+  border-color: lime;
+}
+
+.lift-container {
+  display: flex;
+  gap: 3rem;
+}
+
+.lift {
+  display: flex;
+  box-shadow: inset 0px 0px 2px 1px gray, inset 0px -3px 4px rgba(0, 0, 0, 0.3),
+    inset 0px 3px 4px rgba(255, 255, 255, 0.6), 0px -2px 3px rgba(0, 0, 0, 0.6),
+    0px 1px 2px rgba(255, 255, 255, 0.7), 0px 0px 1px 1px black,
+    0px 0px 0px 5px gray, 0px 0px 1px 6px black;
+  width: 85px;
+  overflow: hidden;
+  background: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRd1mWAPNX7-MZcsoEi71aX8HHqspuPd_6ssQ&s);
+  background-size: 100% 100%;
+}
+
+.left-door,
+.right-door {
+  width: 50px;
+  border: 1px solid rgb(97, 92, 92);
+  background-color: #aaa;
+}
+
+.floor .wall {
+  background-color: rgb(167, 135, 39);
+  width: 20rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.floor .wall .window {
+  background-color: rgb(232, 165, 40);
+  border: solid rgb(255, 167, 3);
+  width: 10rem;
+  height: 10rem;
+  margin: 1rem;
+}
+
+.building-container .ground-floor {
+  width: 100%;
+  height: 15rem;
+  background-color: rgb(66, 53, 14);
+  display: flex;
+  align-items: center;
+  padding: 0.6rem;
+}
+
+.ground-floor .entrance {
+  border: solid gray;
+  width: 20rem;
+  height: 14rem;
+  display: flex;
+  box-shadow: inset 0px 0px 2px 1px rgb(10, 10, 10),
+    inset 0px -3px 4px rgba(0, 0, 0, 0.3),
+    inset 0px 3px 4px rgba(40, 40, 40, 0.6), 0px -2px 3px rgba(0, 0, 0, 0.6),
+    0px 1px 2px rgba(39, 39, 39, 0.7), 0px 0px 1px 1px black,
+    0px 0px 0px 5px gray, 0px 0px 1px 6px black;
+}
+
+.entrance .left-entrance-door,
+.entrance .right-entrance-door {
+  width: 10rem;
+  border: 1px solid rgb(97, 92, 92);
+  background-color: #aaa;
+  height: 100%;
+}
+
+.left-entrance-door .entry-sign {
+  border: solid black;
+  height: 3rem;
+  width: 6rem;
+  border-radius: 1rem;
+  background-color: lime;
+  font-weight: bold;
+  font-size: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bottom {
+  border: solid black;
+  height: 2rem;
+  width: 100%;
+  border: solid rgb(204, 164, 45);
+  background-color: rgb(167, 135, 39);
+}
+
+.road {
+  height: 15rem;
+  width: 100%;
+  background-color: darkslategrey;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.road-marking-container {
+  height: 2rem;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 2rem;
+}
+
+.road-marking {
+  width: 5rem;
+  height: 1rem;
+  background-color: var(--secondary-color);
 }
