@@ -162,7 +162,7 @@
   justify-content: space-between;
   align-items: center;
   background-color: rgb(66, 53, 14);
-  height: 15rem;
+  height: 150px;
   border: 1px solid rgb(204, 164, 45);
   gap: 5rem;
   min-width: 120rem;
@@ -170,7 +170,8 @@
 
 .lift-system {
   display: flex;
-  gap: 15rem;
+  gap: 4rem;
+  height: 100%;
 }
 
 .lift-controls {
@@ -179,6 +180,7 @@
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
+  gap: 1rem;
 }
 
 .floor-number {
@@ -207,8 +209,6 @@
 .lift-container {
   display: flex;
   gap: 3rem;
-  /* min-width: 50%; */
-  height: 135px;
 }
 
 .lift {
@@ -217,7 +217,7 @@
     inset 0px 3px 4px rgba(255, 255, 255, 0.6), 0px -2px 3px rgba(0, 0, 0, 0.6),
     0px 1px 2px rgba(255, 255, 255, 0.7), 0px 0px 1px 1px black,
     0px 0px 0px 5px gray, 0px 0px 1px 6px black;
-  width: 100px;
+  width: 85px;
   overflow: hidden;
   background: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRd1mWAPNX7-MZcsoEi71aX8HHqspuPd_6ssQ&s);
   background-size: 100% 100%;
@@ -247,7 +247,7 @@
 }
 
 .building-container .ground-floor {
-  min-width: 120rem;
+  width: 100%;
   height: 15rem;
   background-color: rgb(66, 53, 14);
   display: flex;
@@ -311,7 +311,7 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  gap: 3rem;
+  gap: 2rem;
 }
 
 .road-marking {
