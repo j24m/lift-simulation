@@ -243,12 +243,86 @@ function moveLiftToFloor(targetFloor) {
       clickedDownBtn.style.borderColor = "red";
     });
   }
+  let freeLiftOnTargetFloor = liftsArray.find(
+    (lift) =>
+      Number(lift.getAttribute("data-currentfloor")) === targetFloor &&
+      lift.getAttribute("data-state") === "free"
+  );
+
+  if (freeLiftOnTargetFloor) {
+    let leftDoor = freeLiftOnTargetFloor.childNodes[0];
+    let rightDoor = freeLiftOnTargetFloor.childNodes[1];
+    openDoor(leftDoor, rightDoor);
+    setTimeout(() => {
+      closeDoor(leftDoor, rightDoor);
+      setTimeout(() => {
+        clickedUpBtn.disabled = false;
+        clickedDownBtn.disabled = false;
+
+        if (
+          clickedUpBtn.disabled === false &&
+          clickedDownBtn.disabled === false
+        ) {
+          clickedUpBtn.style.borderColor = "black";
+          clickedDownBtn.style.borderColor = "black";
+          clickedUpBtn.style.boxShadow = `inset 0px 0px 2px 1px gray, inset 0px -3px 4px rgba(0, 0, 0, 0.3),
+            inset 0px 3px 4px rgba(255, 255, 255, 0.6), 0px -2px 3px rgba(0, 0, 0, 0.6),
+            0px 1px 2px rgba(255, 255, 255, 0.7), 0px 0px 1px 1px black,
+            0px 0px 0px 5px gray, 0px 0px 1px 6px black`;
+          clickedDownBtn.style.boxShadow = `inset 0px 0px 2px 1px gray, inset 0px -3px 4px rgba(0, 0, 0, 0.3),
+            inset 0px 3px 4px rgba(255, 255, 255, 0.6), 0px -2px 3px rgba(0, 0, 0, 0.6),
+            0px 1px 2px rgba(255, 255, 255, 0.7), 0px 0px 1px 1px black,
+            0px 0px 0px 5px gray, 0px 0px 1px 6px black`;
+          clickedUpBtn.addEventListener("mouseenter", () => {
+            clickedUpBtn.style.borderColor = "lime";
+          });
+          clickedUpBtn.addEventListener("mouseleave", () => {
+            clickedUpBtn.style.borderColor = "black";
+          });
+          clickedDownBtn.addEventListener("mouseenter", () => {
+            clickedDownBtn.style.borderColor = "lime";
+          });
+          clickedDownBtn.addEventListener("mouseleave", () => {
+            clickedDownBtn.style.borderColor = "black";
+          });
+        }
+
+        freeLiftOnTargetFloor.setAttribute("data-state", "free");
+        if (pendingRequests.length > 0) {
+          moveLiftToFloor(pendingRequests[0]);
+          pendingRequests.shift();
+        }
+      }, 1000);
+    }, 1000);
+    return;
+  }
+
   let firstFreeLift = liftsArray.find(
-    (freeLift) => freeLift.getAttribute("data-state") === "free"
+    (lift) => lift.getAttribute("data-state") === "free"
   );
   if (firstFreeLift === undefined) {
     pendingRequests.push(targetFloor);
   } else {
+    let currentFloor;
+    function findNearestLift(targetFloor) {
+      let closestLift = liftsArray.find((lift) => {
+        return lift.getAttribute("data-state") === "free";
+      });
+      let assumedClosestFloorValue;
+      assumedClosestFloorValue = Math.abs(
+        targetFloor - liftsArray[0].getAttribute("data-currentfloor")
+      );
+      liftsArray.forEach((lift) => {
+        let currentFloorValue = Number(lift.getAttribute("data-currentfloor"));
+        let difference = Math.abs(targetFloor - currentFloorValue);
+        if (difference < assumedClosestFloorValue) {
+          assumedClosestFloorValue = difference;
+          closestLift = lift;
+        }
+      });
+      return closestLift;
+    }
+    firstFreeLift = findNearestLift(targetFloor);
     currentFloor = firstFreeLift.getAttribute("data-currentfloor");
     distanceToMove = -((targetFloor - 1) * 150);
     firstFreeLift.style.transform = `translateY(${distanceToMove}px)`;
