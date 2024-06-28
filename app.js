@@ -170,8 +170,8 @@ function generateLiftsAndFloors() {
           rightDoor.classList.add("right-door");
           lift.appendChild(leftDoor);
           lift.appendChild(rightDoor);
-          floor.appendChild(liftContainer);
           liftContainer.appendChild(lift);
+          floor.appendChild(liftContainer);
           liftsArray.push(lift);
           liftSystem.appendChild(liftContainer);
         }
@@ -243,15 +243,18 @@ function moveLiftToFloor(targetFloor) {
       clickedDownBtn.style.borderColor = "red";
     });
   }
-  let freeLiftOnTargetFloor = liftsArray.find(
-    (lift) =>
+
+  let freeLiftOnTargetFloor = liftsArray.find((lift) => {
+    return (
       Number(lift.getAttribute("data-currentfloor")) === targetFloor &&
       lift.getAttribute("data-state") === "free"
-  );
+    );
+  });
 
   if (freeLiftOnTargetFloor) {
     let leftDoor = freeLiftOnTargetFloor.childNodes[0];
     let rightDoor = freeLiftOnTargetFloor.childNodes[1];
+    freeLiftOnTargetFloor.setAttribute("data-state", "busy");
     openDoor(leftDoor, rightDoor);
     setTimeout(() => {
       closeDoor(leftDoor, rightDoor);
@@ -286,7 +289,6 @@ function moveLiftToFloor(targetFloor) {
             clickedDownBtn.style.borderColor = "black";
           });
         }
-
         freeLiftOnTargetFloor.setAttribute("data-state", "free");
         if (pendingRequests.length > 0) {
           moveLiftToFloor(pendingRequests[0]);
@@ -294,26 +296,27 @@ function moveLiftToFloor(targetFloor) {
         }
       }, 1000);
     }, 1000);
-    return;
-  }
-
-  let firstFreeLift = liftsArray.find(
-    (lift) => lift.getAttribute("data-state") === "free"
-  );
-  if (firstFreeLift === undefined) {
+  } else if (
+    freeLiftOnTargetFloor === undefined &&
+    !liftsArray.find((lift) => {
+      return lift.getAttribute("data-state") === "free";
+    })
+  ) {
     pendingRequests.push(targetFloor);
-  } else {
-    let currentFloor;
-    function findNearestLift(targetFloor) {
-      let closestLift = liftsArray.find((lift) => {
+  } else if (freeLiftOnTargetFloor === undefined) {
+    function findNearestLift() {
+      let freeLiftsArray = liftsArray.filter(
+        (lift) => lift.getAttribute("data-state") === "free"
+      );
+      let closestLift = freeLiftsArray.find((lift) => {
         return lift.getAttribute("data-state") === "free";
       });
       let assumedClosestFloorValue;
       assumedClosestFloorValue = Math.abs(
-        targetFloor - liftsArray[0].getAttribute("data-currentfloor")
+        targetFloor - closestLift.getAttribute("data-currentfloor")
       );
-      liftsArray.forEach((lift) => {
-        let currentFloorValue = Number(lift.getAttribute("data-currentfloor"));
+      freeLiftsArray.forEach((lift) => {
+        let currentFloorValue = lift.getAttribute("data-currentfloor");
         let difference = Math.abs(targetFloor - currentFloorValue);
         if (difference < assumedClosestFloorValue) {
           assumedClosestFloorValue = difference;
@@ -322,8 +325,9 @@ function moveLiftToFloor(targetFloor) {
       });
       return closestLift;
     }
-    firstFreeLift = findNearestLift(targetFloor);
-    currentFloor = firstFreeLift.getAttribute("data-currentfloor");
+
+    let firstFreeLift = findNearestLift();
+    let currentFloor = firstFreeLift.getAttribute("data-currentfloor");
     distanceToMove = -((targetFloor - 1) * 150);
     firstFreeLift.style.transform = `translateY(${distanceToMove}px)`;
     firstFreeLift.style.transitionDuration = `${
