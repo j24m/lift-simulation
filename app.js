@@ -77,8 +77,7 @@ function generateLiftsAndFloors() {
     clouds.appendChild(cloud4);
     clouds.appendChild(cloud5);
     mainContainer.appendChild(clouds);
-    mainContainer.style.backgroundColor = "transparent";
-    body.style.backgroundColor = "skyblue";
+    mainContainer.style.backgroundColor = "skyblue";
     userInputModal.style.display = "none";
     backBtn.style.display = "block";
     backBtn.classList.add("btn", "btn-floating", "btn-primary", "backBtn");
