@@ -252,10 +252,13 @@ body {
 }
 
 .floor .wall .window {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: rgb(232, 165, 40);
   border: solid rgb(255, 167, 3);
-  width: 10rem;
-  height: 10rem;
+  width: 8rem;
+  height: 8rem;
   margin: 1rem;
 }
 
@@ -332,14 +335,29 @@ body {
   background-color: var(--secondary-color);
 }
 
+@media screen and (max-width: 615px) {
+  .user-input-container {
+    width: 80%;
+  }
+  .label-input-container {
+    min-width: 80px;
+  }
+}
+
 @media screen and (max-width: 500px) {
   .user-input-container {
-    width: 40rem;
+    width: 80%;
+  }
+  .label-input-container {
+    min-width: 80px;
   }
 }
 
 @media screen and (max-width: 410px) {
   .user-input-container {
-    width: 35rem;
+    width: 80%;
+  }
+  .label-input-container {
+    min-width: 80px;
   }
 }
